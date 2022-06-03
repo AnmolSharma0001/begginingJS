@@ -35,14 +35,23 @@ function playsounds(st) {
     }
 }
 
+function addanime(st) {
+    document.querySelector("." + st).classList.add("pressed");
+    setTimeout(function () {
+        document.querySelector("." + st).classList.remove("pressed");
+    }, 100)
+}
+
 for (var i = 0; i < 7; i++) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
         var buttoninhtml = this.innerHTML;
         playsounds(buttoninhtml);
+        addanime(buttoninhtml);
     });
 }
 
 document.addEventListener("keydown", function (event) {
     //console.log(event);
     playsounds(event.key);
+    addanime(event.key);
 })
